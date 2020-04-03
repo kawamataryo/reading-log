@@ -5,7 +5,7 @@
 # 2020/04/04
 P225〜241
 
-## 名前空間とモジュール
+### 名前空間とモジュール
 - CommonJS方式は、Node.jsで使われているexport, requireの方式。この方式では静的な解析が難しい。（requireに文字列、変数を入れられたりする）標準ではES6のimport、export方式を使う。
 - `import * as hoge from hogehoge` も、esModuleInteropをtrueにすれば`import hoge from hogehoge`でかける
 - namespace機能もある。ただ、namespaceよりはモジュールを使うべき。namespaceの宣言はマージされるので、moduleの方が依存を管理しやすい。
@@ -13,13 +13,13 @@ P225〜241
 # 2020/04/02
 P196〜224
 
-## workerでの型定義
+### workerでの型定義
 worker自体あまり理解しておらずむずかった。読み直しが必要
 <メモ>
 プロセスと、スレッドの違い。プロセスはリソースを共有できない。スレッドは出来る。プロセスで変数を共有したい時はフォークでコピーを作る。
 プロセスから処理の単位としてスレッドが作られる
 
-## tsconfig.jsonのlib
+### tsconfig.jsonのlib
 libはどの組み込みのtype.d.tsを型情報に含めるかの設定。型だけで実態はない。
 たとえば、node.jsの実行環境で、DOMをlibに含めて、コード内で読んでも、コンパイルは通るが実行時にはエラーになる。
 
