@@ -1,7 +1,15 @@
-# TODO: 構成を整理する
 # O'Reilly プログラミング TypeScript
 
 ![image](https://user-images.githubusercontent.com/11070996/78132483-ca1b8780-7457-11ea-8bd1-21a67af11d9d.png)
+
+# 2020/04/04
+P225〜241
+
+## 名前空間とモジュール
+- CommonJS方式は、Node.jsで使われているexport, requireの方式。この方式では静的な解析が難しい。（requireに文字列、変数を入れられたりする）標準ではES6のimport、export方式を使う。
+- `import * as hoge from hogehoge` も、esModuleInteropをtrueにすれば`import hoge from hogehoge`でかける
+- namespace機能もある。ただ、namespaceよりはモジュールを使うべき。namespaceの宣言はマージされるので、moduleの方が依存を管理しやすい。
+
 # 2020/04/02
 P196〜224
 
