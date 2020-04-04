@@ -2,6 +2,26 @@
 
 ![image](https://user-images.githubusercontent.com/11070996/78132483-ca1b8780-7457-11ea-8bd1-21a67af11d9d.png)
 
+# 2020/04/05
+P242〜260
+
+### アンビエント宣言
+`declare module`で型がないモジュールに対しても型を宣言をすることができる。 型がないものについては無理やりdeclareを使う。
+
+```typescript
+// foo-libはanyとして推論される
+declare module 'foo-lib' {}
+
+// bar-libはbarLib.aはstringとして推論される
+declare module 'bar-lib' {
+  type defaultType = {
+    a: string
+  }
+  export default defaultType
+}
+
+```
+
 # 2020/04/04
 P225〜241
 
