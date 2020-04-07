@@ -2,6 +2,28 @@
 
 ![image](https://user-images.githubusercontent.com/11070996/78132483-ca1b8780-7457-11ea-8bd1-21a67af11d9d.png)
 
+2週目
+---
+
+# 2020/04/07
+
+### TypeScriptの実行の流れ
+
+TypeScriptコードはtscよって、まずAST（抽象構文木。コードから空白や、コメント等を削除したもの）に変換されて、その後、型チェックが実行され、targetに指定されたJavaScriptにトランスパイルされる。
+その後は、通常のJavaScriptの実行と同じく、プラウザのJavaScriptエンジンのコンパイラによってASTに変換、ASTをバイトコードに変換、バイトコードをランタイムが評価という流れになる。
+
+
+![Frame 3](https://user-images.githubusercontent.com/11070996/78637385-388f9800-78e5-11ea-97f1-fb2fcff303b7.png)
+
+**捕捉**
+ASTは https://astexplorer.net/ で見れる。
+
+
+
+1週目
+---
+
+
 # 2020/04/07
 P281〜313
 
