@@ -2,13 +2,35 @@
 
 ![image](https://user-images.githubusercontent.com/11070996/78132483-ca1b8780-7457-11ea-8bd1-21a67af11d9d.png)
 
+# 2020/04/07
+P281〜313
+
+### ESLintのASTとTypeScriptのAST
+
+ESLintはJSをESLintが解釈できるASTにestreeに変換して検査を行う。そのASTはTypeScriptがJSに変換する際のASTとは異なる。
+なので、eslint-typescript プラグインで、TypeScriptからASTへの変換、そのASTからESTreeeのASTへの変換を行う必要がある。
+
+https://github.com/typescript-eslint/typescript-eslint#how-does-typescript-eslint-work-and-why-do-you-have-multiple-packages
+
+### ESLintで型検査が必要なルールを有効化する
+
+recommended-requiring-type-checking
+をextendすると、型検査が必要ルールを有効化することができる。
+
+https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/src/configs/recommended-requiring-type-checking.json
+
+型検査が必要になるので、ESLintの実行速度は低下する。
+
 # 2020/04/06
 P261〜280
 
 ### tscのトランスパイルについて
-tscのトランスパイルはtargetで指定したesのバージョンに変換するもの。
-そのランタイムにない機能については提供しないので注意!! Polyfillが別途必要になる。
-（polyfillと、トランスパイルの違いについてあまり理解してない..調べよう。）
+tscのトランスパイルはtargetで指定したesのバージョンの文法に変換するもの。
+そのプラウザにないAPIについては提供しないので注意!! その機能を提供するPolyfillが別途必要になる。
+Polyfillとトランスパイルの違い
+https://qiita.com/Sekky0905/items/4515203428d9715fde5f
+
+
 
 ### importHelpers
 `...`スプレッド構文などを、トランスパイルするときに一つのファイルごとに`__asigin` のヘルパー関数が定義される。100ファイルあると、100回定義されるので、無駄。importHelpersを有効化すると、tslibというライブラリからヘルパー関数をimportする形式に変わりファイルサイズの肥大化を防げる。
