@@ -1,17 +1,101 @@
-# TODO: 構成を整理する
 # O'Reilly プログラミング TypeScript
 
 ![image](https://user-images.githubusercontent.com/11070996/78132483-ca1b8780-7457-11ea-8bd1-21a67af11d9d.png)
+
+2週目
+---
+
+# 2020/04/07
+
+### TypeScriptの実行の流れ
+
+TypeScriptコードはtscよって、まずAST（抽象構文木。コードから空白や、コメント等を削除したもの）に変換されて、その後、型チェックが実行され、targetに指定されたJavaScriptにトランスパイルされる。
+その後は、通常のJavaScriptの実行と同じく、プラウザのJavaScriptエンジンのコンパイラによってASTに変換、ASTをバイトコードに変換、バイトコードをランタイムが評価という流れになる。
+
+
+![Frame 3](https://user-images.githubusercontent.com/11070996/78637385-388f9800-78e5-11ea-97f1-fb2fcff303b7.png)
+
+**捕捉**
+ASTは https://astexplorer.net/ で見れる。
+
+
+
+1週目
+---
+
+
+# 2020/04/07
+P281〜313
+
+### ESLintのASTとTypeScriptのAST
+
+ESLintはJSをESLintが解釈できるASTにestreeに変換して検査を行う。そのASTはTypeScriptがJSに変換する際のASTとは異なる。
+なので、eslint-typescript プラグインで、TypeScriptからASTへの変換、そのASTからESTreeeのASTへの変換を行う必要がある。
+
+https://github.com/typescript-eslint/typescript-eslint#how-does-typescript-eslint-work-and-why-do-you-have-multiple-packages
+
+### ESLintで型検査が必要なルールを有効化する
+
+recommended-requiring-type-checking
+をextendすると、型検査が必要ルールを有効化することができる。
+
+https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/src/configs/recommended-requiring-type-checking.json
+
+型検査が必要になるので、ESLintの実行速度は低下する。
+
+# 2020/04/06
+P261〜280
+
+### tscのトランスパイルについて
+tscのトランスパイルはtargetで指定したesのバージョンの文法に変換するもの。
+そのプラウザにないAPIについては提供しないので注意!! その機能を提供するPolyfillが別途必要になる。
+Polyfillとトランスパイルの違い
+https://qiita.com/Sekky0905/items/4515203428d9715fde5f
+
+
+
+### importHelpers
+`...`スプレッド構文などを、トランスパイルするときに一つのファイルごとに`__asigin` のヘルパー関数が定義される。100ファイルあると、100回定義されるので、無駄。importHelpersを有効化すると、tslibというライブラリからヘルパー関数をimportする形式に変わりファイルサイズの肥大化を防げる。
+tslibは別途importが必要
+
+# 2020/04/05
+P242〜260
+
+### アンビエント宣言
+`declare module`で型がないモジュールに対しても型を宣言をすることができる。 型がないものについては無理やりdeclareを使う。
+
+```typescript
+// foo-libはanyとして推論される
+declare module 'foo-lib' {}
+
+// bar-libはbarLib.aはstringとして推論される
+declare module 'bar-lib' {
+  type defaultType = {
+    a: string
+  }
+  export default defaultType
+}
+
+```
+
+# 2020/04/04
+P225〜241
+
+### 名前空間とモジュール
+- CommonJS方式は、Node.jsで使われているexport, requireの方式。この方式では静的な解析が難しい。（requireに文字列、変数を入れられたりする）標準ではES6のimport、export方式を使う。
+- `import * as hoge from hogehoge` も、esModuleInteropをtrueにすれば`import hoge from hogehoge`でかける
+- namespace機能もある。ただ、namespaceよりはモジュールを使うべき。namespaceの宣言はマージされるので、moduleの方が依存を管理しやすい。
+
 # 2020/04/02
 P196〜224
 
-## workerでの型定義
+### workerでの型定義
 worker自体あまり理解しておらずむずかった。読み直しが必要
 <メモ>
 プロセスと、スレッドの違い。プロセスはリソースを共有できない。スレッドは出来る。プロセスで変数を共有したい時はフォークでコピーを作る。
 プロセスから処理の単位としてスレッドが作られる
 
-## tsconfig.jsonのlib
+### tsconfig.jsonのlib
 libはどの組み込みのtype.d.tsを型情報に含めるかの設定。型だけで実態はない。
 たとえば、node.jsの実行環境で、DOMをlibに含めて、コード内で読んでも、コンパイルは通るが実行時にはエラーになる。
 
