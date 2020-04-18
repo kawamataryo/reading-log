@@ -97,4 +97,27 @@ query Hero($episode: Episode, $withFriends: Boolean!) {
 
 ### Schemas and Types
 
-- Scalar型とObject型がある。Scalar型
+- Scalar型とObject型, Array型がある。Scalar型はStringやInt、Booleanなどのプリミティブな値が入る。
+
+```graphql
+type Character {
+  name: string  # Scalar型 nullable
+  appearsIn: [Episode!]! # Array 型 non-nullable
+  parents: { # Object型
+    name: string! # scalar型 non-nullable
+  }
+}
+```
+
+- 全て引数には名前が必要。 `=` で初期値を代入することができる。
+- schemaには2つの特別な型、`Query`, `Mutation`がある
+
+```graphql
+schema {
+  query: Query
+  mutation: Mutation
+}
+```
+
+- ID型は一意な識別しを持つ。人間が識別できることを想定していないUUIDなどが入る。
+- カスタムなScalar型を定義することができる。たとえば`Date`など。
