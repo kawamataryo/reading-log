@@ -93,3 +93,8 @@ query Hero($episode: Episode, $withFriends: Boolean!) {
 ```
 
 - Mutationsはクエリのように複数の変更を一つのリクエストに含めることができる。その場合は上から順次実行されるのでコンフリクトを心配する必要はない。
+
+
+### Schemas and Types
+
+- Scalar型とObject型がある。Scalar型
