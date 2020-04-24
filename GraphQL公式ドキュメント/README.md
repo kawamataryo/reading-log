@@ -33,6 +33,7 @@ https://graphql.org/learn/
 
 - `!` が non-null の意味。引数でも、戻り値でも同じ
 - リストの non-null は値が null 許可するか、リスト自体の null を許可するかでパターンがある
+
   ```graphql
   [String] // 配列自体も要素もnull可能
   [String!] // 配列自体はnull可能だけど、要素がある場合はそこはnull不可
@@ -40,12 +41,20 @@ https://graphql.org/learn/
   [String!]! // 配列自体も要素もnull不可
   ```
 - interface もある。interface を定義すると、implements で型に制約を与えることもできる。
+
   ```graphql
   interface Character {
     id: ID!
+  }
+
+  type Human implements Character {
+    id: ID!
     name: String!
-    friends: [Character]
-    appearsIn: [Episode]!
+  }
+
+  type Cat implements Character {
+    id: ID!
+    roar: String!
   }
   ```
 
