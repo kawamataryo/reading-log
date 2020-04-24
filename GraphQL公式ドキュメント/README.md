@@ -40,6 +40,7 @@ https://graphql.org/learn/
   [String]! // 配列自体はnull不可、要素はnull可
   [String!]! // 配列自体も要素もnull不可
   ```
+
 - interface もある。interface を定義すると、implements で型に制約を与えることもできる。
 
   ```graphql
@@ -57,6 +58,15 @@ https://graphql.org/learn/
     roar: String!
   }
   ```
+
+- Union types も定義できる。implements インターフェイスにある項目のみinline fragmentsの外に書くとか簡潔な書き方ができる。
+- Input type もある。引数でオブジェクトを使って整理したい時に使える。
+```graphql
+input ReviewInput {
+  stars: Int!
+  commentary: String
+}
+```
 
 # 2020/04/18
 
