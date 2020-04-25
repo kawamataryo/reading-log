@@ -4,6 +4,40 @@ https://graphql.org/learn/
 
 <img width="1415" alt="スクリーンショット 2020-04-18 6 00 32" src="https://user-images.githubusercontent.com/11070996/79613676-f0207780-8139-11ea-8df4-a6533cbc9459.png">
 
+# 2020/04/26
+
+### Validation
+
+- Union タイプでいずれかが持つフィールドをクエリの戻り値として含める場合は、フラグメントで型の絞り込みをする必要がある。inline でなくても良いが、冗長になるので inline fragment が良い。
+
+```graphql
+{
+  hero {
+    name
+    ... on Droid {
+      primaryFunction
+    }
+  }
+}
+```
+
+- https://github.com/graphql/graphql-js/tree/master/src/validation に詳しい validation rule がある
+
+# Execution
+
+- 各 type の field はリゾルバ関数と紐づいている。フィールドが呼び出されるとリゾルバが実行され、値が返却される。フィールドの戻り値が scalar 型の場合は、その値が返却されて、オブジェクト型の場合は、スカラー型に到達するまで、再起的に実行される。<=木構造だ
+
+- リゾルバ関数は obj, args, context, info の 4 つの引数を受け取る。GraphQL Ruby の場合は、args 以外の情報は、root の controller で処理されているのかな？
+  - obj・・前のオブジェクト？
+  - args・・ クエリのフィールドの引数
+  - context・・コンテキスト情報、ログイン情報などなど
+  - info・・フィールド名とか、schema など固有の情報。詳細はhttps://graphql.org/graphql-js/type/#graphqlobjecttype
+
+* Promise を返す非同期なリゾルバもある。その場合でも、GraphQL は実行が完了してからクエリ結果を返すので、呼び出し側が意識する必要はない。
+
+* 多くの GraphQL ライブラリでは、フィールドにリゾルバが提供されていない場合は、戻り値のオブジェクトの同名のプロパティが読み取られる。
+  - GraphQL Ruby の場合は ActiveRecord を返すと、モデルの各フィールドが返される。
+
 # 2020/04/25
 
 ### Schemas and Types
@@ -59,8 +93,9 @@ https://graphql.org/learn/
   }
   ```
 
-- Union types も定義できる。implements インターフェイスにある項目のみinline fragmentsの外に書くとか簡潔な書き方ができる。
+- Union types も定義できる。implements インターフェイスにある項目のみ inline fragments の外に書くとか簡潔な書き方ができる。
 - Input type もある。引数でオブジェクトを使って整理したい時に使える。
+
 ```graphql
 input ReviewInput {
   stars: Int!
