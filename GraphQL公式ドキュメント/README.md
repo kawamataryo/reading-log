@@ -38,6 +38,8 @@ https://graphql.org/learn/
 * 多くの GraphQL ライブラリでは、フィールドにリゾルバが提供されていない場合は、戻り値のオブジェクトの同名のプロパティが読み取られる。
   - GraphQL Ruby の場合は ActiveRecord を返すと、モデルの各フィールドが返される。
 
+- scalar Coercion と List resolvers はあまり理解していない。何を示唆しているのか分からなかった
+
 # 2020/04/25
 
 ### Schemas and Types
