@@ -29,7 +29,7 @@ https://graphql.org/learn/
 
 - https://github.com/graphql/graphql-js/tree/master/src/validation に詳しい validation rule がある
 
-# Execution
+### Execution
 
 - 各 type の field はリゾルバ関数と紐づいている。フィールドが呼び出されるとリゾルバが実行され、値が返却される。フィールドの戻り値が scalar 型の場合は、その値が返却されて、オブジェクト型の場合は、スカラー型に到達するまで、再起的に実行される。<=木構造だ
 
