@@ -7,32 +7,94 @@
 
 ### 依存関係の管理
 
-```ruby
-class Wheel
-  attr_reader :rim, :tire
-  
-  def initialize(rim, tire)
-    @rim = rim
-    @tire = tire
-  end
-  
-  def diameter
-    rim + (tire * 2) 
-  end
-end
+・クラス同士の依存はなるべく作らないほうが良い。依存があると修正の影響範囲が広がる。
 
-class Gear
-  attr_reader :chainring, :cog, :rim, :tire
+依存があるクラスの例。
 
-  def initialize(chainring, cog, rim, tire)
-    @chainring = chainring
-    @cog = cog
-    @rim = rim
-    @tire = tire    
-  end
+```ts
+class Car {
+  engine: Engine
+  constructor(private type: string) {
+    this.engine = new Engine(type)
+  }
 
-  def gire_inches
-    ratio * wheel.new(rim, tire).diameter
-  end
-end
+  move() {
+    this.engine.start()
+    // なんらかの処理
+  }
+}
+
+
+class Engine {
+  constructor(public type: string){}
+
+  start() {
+    // 処理
+  }
+}
+
+const car = new Car("Honda")
+car.move()
+```
+
+依存を注入した場合（DI）
+Engineクラスに依存するのではなく、startメソッドを持つEngineのinterfaceに依存する
+
+```ts
+class Car {
+  constructor(private engine: Engine) {}
+
+  move() {
+    this.engine.start()
+    // なんらかの処理
+  }
+}
+
+
+class Engine {
+  constructor(public type: string){}
+
+  start() {
+    // 処理
+  }
+}
+
+// CarクラスにEngineを注入している
+const car = new Car(new Engine("Honda"))
+car.move()
+```
+
+依存を逆転した場合。
+たぶん良い例ではない。使う側の処理が変わっている。（CarではなくEngineをnewすることになる）
+
+```ts
+class Car {
+  constructor() {}
+
+  move(engine: Engine) {
+    engine.start()
+    // なんらかの処理
+  }
+}
+
+
+// EngineはCarクラスに依存している
+class Engine {
+  car: Car
+  constructor(public type: string){
+    this.car = new Car
+  }
+
+  start() {
+    // 処理
+  }
+
+  carMove() {
+    // 処理
+    this.car.move(this)
+  }
+}
+
+const engine = new Engine("Honda")
+engine.carMove()
 ```
