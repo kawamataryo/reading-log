@@ -60,12 +60,14 @@ class Engine {
 }
 
 // CarクラスにEngineを注入している
-const car = new Car(new Engine("Honda"))
+const engine = new Engine("Honda")
+const car = new Car(engine)
 car.move()
 ```
 
 依存を逆転した場合。
-たぶん良い例ではない。使う側の処理が変わっている。（CarではなくEngineをnewすることになる）
+間違った例。使う側の処理が変わっている。
+使う側がEngineをnewすることでCarを動かしている。
 
 ```ts
 class Car {
@@ -97,4 +99,35 @@ class Engine {
 
 const engine = new Engine("Honda")
 engine.carMove()
+```
+
+正しい依存関係逆転の例
+CarクラスはEngineに直接依存せず、IStartableに依存している。
+EngineクラスはIStartableに依存している。
+
+```ts
+class Car {
+  constructor(private engine: IStartable) {}
+
+  move() {
+    this.engine.start();
+    // なんらかの処理
+  }
+}
+
+interface IStartable {
+  start: () => void;
+}
+
+class Engine implements IStartable {
+  constructor(public type: string) {}
+
+  start() {
+    // 処理
+  }
+}
+
+const engine = new Engine("Honda")
+const car = new Car(engine)
+car.move()
 ```
