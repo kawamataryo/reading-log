@@ -13,16 +13,15 @@ end
 
 # GearはWheelに依存している
 class Gear
-  attr_reader :chainring, :cog, :rim, :tire
+  attr_reader :chainring, :cog, :wheel
 
   def initialize(chainring, cog, rim, tire)
     @chainring = chainring
     @cog = cog
-    @rim = rim
-    @tire = tire
+    @wheel = Wheel.new(rim, tire)
   end
 
   def gear_inches
-    ratio * wheel.new(rim, tire).diameter
+    ratio * wheel.diameter
   end
 end
