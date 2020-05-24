@@ -3,6 +3,23 @@
 # 目的
 - JS及びプラウザの挙動、プログラミングの基礎固め
 
+# Promise
+📅 2020/05/25
+[Promise](https://ja.javascript.info/promise-basics)
+[Promises チェーン](https://ja.javascript.info/promise-chaining)
+
+- 非同期アクションは常にPromiseを返すべき
+- 非同期で例外のキャチを忘れると、unhandledrejectionイベントが発生する。
+
+```js
+new Promise(function(resolve, reject) {
+  setTimeout(() => {
+    throw new Error("Whoops!");
+  }, 1000);
+}).catch(alert);
+```
+
+でalertは実行されない。executorの外なので暗黙のtry..catchが効かない
 
 # Mutation observer
 📅 2020/05/24
@@ -92,3 +109,9 @@ Promise.resolve()
 //1番目に実行
 alert("code");
 ```
+
+# Promise
+📅 2020/05/24
+[Promise](https://ja.javascript.info/promise-basics)
+
+- promiseに渡されるコールバックはexecutorと呼ばれる
