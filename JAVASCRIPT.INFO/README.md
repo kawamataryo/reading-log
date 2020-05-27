@@ -3,6 +3,51 @@
 # 目的
 - JS及びプラウザの挙動、プログラミングの基礎固め
 
+# メモ良いところ
+- 実際のコードでどう使われるかが書いてる。逆に使われない場合も、使われないと書いてある。
+
+# Promise
+📅 2020/05/28
+[Promise API](https://ja.javascript.info/promise-api)
+[Promisification](https://ja.javascript.info/promisify)
+[Microtasks](https://ja.javascript.info/microtask-queue)
+
+`Promise.resolve`はPromiseをラップしたい処理で使える。例えばキャッシュがあれば、キャッシュで返し、なければ非同期処理を呼ぶ関数など。キャッシュから返す場合でもPromiseでラップすると使い手側は、そのことを考えなくて良い
+
+
+```js
+function loadCached(url) {
+  let cache = loadCached.cache || (loadCached.cache = new Map());
+
+  if (cache.has(url)) {
+    return Promise.resolve(cache.get(url)); // (*)
+  }
+
+  return fetch(url)
+    .then(response => response.text())
+    .then(text => {
+      cache[url] = text;
+      return text;
+    });
+}
+```
+
+- .json()はPromiseを返すのか,,。fetchは全て完了するまえにresponseを返すから？
+- Promise.allはどれかが途中で失敗しても、他は実行し続ける。途中でキャンセルとかはない。
+- 非Promiseの値をPromise.allに渡した場合、その値はPromise.resolve()でラップされる。
+
+Promise.allでどれかが失敗した場合でも、成功した結果はアウトプットしたい場合の書き方。
+勉強になるな。
+
+```js
+Promise.all(
+  // それぞれにcatchを書く
+  fetch('https://api.github.com/users/iliakan').catch(err => err),
+  fetch('https://api.github.com/users/remy').catch(err => err),
+  fetch('http://no-such-url').catch(err => err)
+).then(result => /*...*/)
+```
+
 # Promise
 📅 2020/05/25
 [Promise](https://ja.javascript.info/promise-basics)
