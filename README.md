@@ -11,3 +11,5 @@ My personal reading log.
 |[GraphQL公式ドキュメント](https://github.com/kawamataryo/reading-log/tree/master/GraphQL%E5%85%AC%E5%BC%8F%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88)| 2020/04/18 | - |
 |[オブジェクト指向設計実践ガイド](https://github.com/kawamataryo/reading-log/blob/master/%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E6%8C%87%E5%90%91%E8%A8%AD%E8%A8%88%E5%AE%9F%E8%B7%B5%E3%82%AC%E3%82%A4%E3%83%89)| 2020/05/02（再読） | - |
 |[SOLID](https://github.com/kawamataryo/reading-log/tree/master/SOLID) | 2020/05/05 | - |
+|[JAVASCRIPT.INFO](https://github.com/kawamataryo/reading-log/tree/master/JAVASCRIPT.INFO)| 2020/05/24 | - |
+|[新しい経営学](https://github.com/kawamataryo/reading-log/tree/master/%E6%96%B0%E3%81%97%E3%81%84%E7%B5%8C%E5%96%B6%E5%AD%A6) | 2020/05/24 | - |
