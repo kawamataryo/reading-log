@@ -6,6 +6,36 @@
 # メモ良いところ
 - 実際のコードでどう使われるかが書いてる。逆に使われない場合も、使われないと書いてある。
 
+# プラウザ
+📅 2020/05/30
+[ブラウザ環境, 仕様](https://ja.javascript.info/browser-environment)
+[DOM ツリー](https://ja.javascript.info/dom-nodes)
+[DOM を歩く](https://ja.javascript.info/dom-navigation)
+
+プラウザの仕様
+- プラウザにはグローバルオブジェクトがある
+- DOM, BOM, JSの3つ
+- CSSを構造的に把握するためのCSSOMという仕様もある
+- BOM（Browser Object Mode) document以外のプラウザに提供される追加オブジェト
+  - navigator OSのバックグラウンド情報, UAとか
+  - location 現在のURL、新しいURLへのリダイレクト
+  - BOMはHTML仕様の一部
+
+DOMの自動補正
+- プラウザは書きかけのHTMLを補正する
+- HTMLやBODYがなかったら勝手に挿入する
+
+- コメントも自動的にノードになる
+
+DOMコレクション
+- Arrayライクなオブジェクト
+- for .. ofで反復処理できる
+- filterとかは使えない
+  - Array.from(document.body.childNodes).filter で使える
+
+Element-only navigation
+- テキストノードや、コメントノードを除く場合は、Element付きのメソッドを呼ぶ
+
 # Promise
 📅 2020/05/28
 [Promise API](https://ja.javascript.info/promise-api)
