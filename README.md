@@ -14,3 +14,4 @@ My personal reading log.
 |[JAVASCRIPT.INFO](https://github.com/kawamataryo/reading-log/tree/master/JAVASCRIPT.INFO)| 2020/05/24 | - |
 |[新しい経営学](https://github.com/kawamataryo/reading-log/tree/master/%E6%96%B0%E3%81%97%E3%81%84%E7%B5%8C%E5%96%B6%E5%AD%A6) | 2020/05/24 | - |
 [[clean-code-typescript](https://github.com/MSakamaki/clean-code-typescript)|2020/06/13| - |
+[[プログラマの数学](https://github.com/MSakamaki/clean-code-typescript)|2020/07/06| - |

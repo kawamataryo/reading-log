@@ -32,4 +32,8 @@ const hoge = (options: { a: string?, b: number?, c: string? }) {
 [関数の引数にフラグは渡さない](https://github.com/MSakamaki/clean-code-typescript#%E9%96%A2%E6%95%B0%E3%81%AE%E5%BC%95%E6%95%B0%E3%81%AB%E3%83%95%E3%83%A9%E3%82%B0%E3%81%AF%E6%B8%A1%E3%81%95%E3%81%AA%E3%81%84)
 - 関数がフラグを受け取る場合は、その関数は別の処理を行うということ。そもそも関数を分割した方が良い。
 
-ジェネレーター関数
+ジェネレーター関数 `function*`で始まるやつ
+
+[getterとsetterを使う](https://github.com/MSakamaki/clean-code-typescript#getter-%E3%81%A8-setter-%E3%82%92%E4%BD%BF%E3%81%86)
+- オブジェクトをカプセル化したり、バリデーションする時は良さそう.
+- 
