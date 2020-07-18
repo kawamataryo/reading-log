@@ -17,3 +17,4 @@ My personal reading log.
 |[プログラマの数学](https://github.com/kawamataryo/reading-log/tree/master/%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9E%E3%81%AE%E6%95%B0%E5%AD%A6)|2020/07/06| - |
 |[関数型プログラミングの基礎](https://www.google.co.jp/search?q=%E9%96%A2%E6%95%B0%E5%9E%8B%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E3%81%AE%E5%9F%BA%E7%A4%8E+javascript)|2020/07/08 |-|
 |[スターティングGO言語](https://www.shoeisha.co.jp/book/detail/9784798142418)|2020/07/08 |-|
+|[Vue.js公式ドキュメント]()|2020/07/19|-|
