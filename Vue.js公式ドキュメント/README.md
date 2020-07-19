@@ -62,3 +62,23 @@ https://v3.vuejs.org/
 2020/07/19
 次回はここから
 https://v3.vuejs.org/guide/class-and-style.html#binding-inline-styles
+
+# 条件付きレンダリング
+- [Conditional Rendering | Vue.js](https://v3.vuejs.org/guide/conditional.html#v-else)
+- v-ifとv-showの違いは、v-showは常にDOMに要素が残りCSSのdisplayプロパティによって表示が制御されること。v-showはtemplateで使うことはできない。
+- v-ifはコストが高い。頻繁に切り替える要素の場合はv-showを使った方が良い
+
+# リストレンダリング
+- [List Rendering | Vue.js](https://v3.vuejs.org/guide/list.html#mapping-an-array-to-elements-with-v-for)
+- v-forはオブジェクトの各プロパティの反復処理もできる。引数を２つに分けることで、keyとvalueを変数に束縛できる。
+  ```vue
+  <li v-for="(value, name) in myObject">
+    {{ name }}: {{ value }}
+  </li>
+  ```
+- リアクティブな要素としての配列は破壊的メソッドをラップして、DOMの再描画をトリガーしている。filter等の非破壊メソッドを使う場合は、再代入を行う。その場合でも、Vueは全てを書き換えるのではなく、必要な要素のみ書き換える動きをする。
+- v-forとv-ifを両方一緒に使った場合は、v-forはv-ifより優先順位が高くなる。
+
+2020/07/20
+次回はここから
+https://v3.vuejs.org/guide/events.html#listening-to-events
