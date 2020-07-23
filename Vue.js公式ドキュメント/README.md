@@ -95,12 +95,13 @@ https://v3.vuejs.org/guide/events.html#listening-to-events
 
 ## イベント修飾子
 DOMイベントの処理を修飾する
-- .stop
-- .prevent
-- .capture
-- .self
-- .once
-- .passive
+修飾子は記載順序で処理が行われるので順番に注意する
+ .stop
+ .prevent
+ .capture
+ .self
+ .once
+ .passive
 
 ```vue
 <!-- the click event's propagation will be stopped -->
