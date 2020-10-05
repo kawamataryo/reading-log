@@ -32,6 +32,8 @@ reactiveの中にrefオブジェクトを入れると、unwrapされて、通常
 
 watchEffectのonTriggerと、onTrackを使うと、trackとtrigger時のいろいろな情報が取れる。これは動きを理解するのに最高
 
+watchEffectのEffectは
+
 ```ts
 watchEffect(
   () => {
